@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Лена Карякина](https://up.htmlacademy.ru/ecmascript/2/user/81563).
-* Наставник: `Неизвестно`.
+* Наставник: [Андрей Алексеев](https://htmlacademy.ru/profile/id4596) :heart: .
 
 ---
 
