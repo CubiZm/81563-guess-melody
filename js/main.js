@@ -18,13 +18,14 @@ const showScreen = () => {
 showScreen(startScreen);
 
 const changeIndex = (evt, index) => {
+  let step = arrTemplates.length;
   if (evt.altKey) {
     switch (evt.keyCode) {
       case RIGHT_ARROW:
-        currentIndex = index === arrTemplates.length - 1 ? 0 : index + 1;
+        currentIndex = index === step - 1 ? 0 : index + 1;
         break;
       case LEFT_ARROW:
-        currentIndex = index ? index - 1 : arrTemplates.length - 1;
+        currentIndex = index ? index - 1 : step - 1;
     }
     showScreen(currentIndex);
   }
