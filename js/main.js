@@ -21,6 +21,7 @@ const showScreen = () => {
 
 const changeIndex = (evt, index) => {
   let step = arrTemplates.length;
+  console.log(evt.altKey);
   if (evt.altKey) { // оно не сдаётся!!! :C
     switch (evt.keyCode) {
       case KeyCode.RIGHT:
@@ -33,7 +34,7 @@ const changeIndex = (evt, index) => {
   }
 };
 
-showScreen(screenIndex);
+showScreen();
 
 document.addEventListener(`keydown`, function (evt) {
   changeIndex(evt, currentIndex);
