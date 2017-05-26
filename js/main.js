@@ -1,7 +1,6 @@
 const KeyCode = {
   LEFT: 37,
-  RIGHT: 39,
-  ALT: 18
+  RIGHT: 39
 };
 
 const app = document.querySelector(`.app`);
@@ -21,8 +20,7 @@ const showScreen = () => {
 
 const changeIndex = (evt, index) => {
   let step = arrTemplates.length;
-  console.log(evt.altKey);
-  if (evt.altKey) { // оно не сдаётся!!! :C
+  if (evt.altKey) {
     switch (evt.keyCode) {
       case KeyCode.RIGHT:
         currentIndex = index === step - 1 ? 0 : index + 1;
