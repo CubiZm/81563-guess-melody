@@ -1,7 +1,8 @@
 (function () {
   const KeyCode = {
     LEFT: 37,
-    RIGHT: 39
+    RIGHT: 39,
+    ALT: 18
   };
 
   const appElement = document.querySelector(`.app`);
@@ -11,6 +12,7 @@
   const startScreenIndex = arrTemplates.findIndex((screen) => screen.classList.contains(startScreen));
   let currentIndex = startScreenIndex;
   let step = arrTemplates.length;
+  let codes = [];
 
   const showScreen = () => {
     const stepContent = arrTemplates[currentIndex];
@@ -27,20 +29,28 @@
   };
 
   const changeScreen = (evt) => {
-    if (evt.altKey) {
-      switch (evt.keyCode) {
-        case KeyCode.RIGHT:
-          rightSwap();
-          break;
-        case KeyCode.LEFT:
-          leftSwap();
+    codes.push(evt.keyCode);
+    let ALT = codes[0] === KeyCode.ALT;
+    let LEFT_ARROW = codes[1] === KeyCode.LEFT;
+    let RIGHT_ARROW = codes[1] === KeyCode.RIGHT;
+    if (codes.length === 2) {
+      if (ALT && LEFT_ARROW) {
+        leftSwap();
+      } else if (ALT && RIGHT_ARROW) {
+        rightSwap();
       }
-      showScreen();
+      codes = [];
     }
+    showScreen();
+  };
+
+  const clearPressKeys = (evt) => {
+    codes = [];
   };
 
   showScreen();
 
   document.addEventListener(`keydown`, changeScreen);
+  document.addEventListener(`keyup`, clearPressKeys);
 
 }());
