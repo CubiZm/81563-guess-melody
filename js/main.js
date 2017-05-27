@@ -20,11 +20,11 @@
     appElement.appendChild(stepContent);
   };
 
-  const rightSwap = () => {
+  const turnRight = () => {
     currentIndex = currentIndex === step - 1 ? 0 : currentIndex + 1;
   };
 
-  const leftSwap = () => {
+  const turnLeft = () => {
     currentIndex = currentIndex ? currentIndex - 1 : step - 1;
   };
 
@@ -35,9 +35,9 @@
     let RIGHT_ARROW = codes[1] === KeyCode.RIGHT;
     if (codes.length === 2) {
       if (ALT && LEFT_ARROW) {
-        leftSwap();
+        turnLeft();
       } else if (ALT && RIGHT_ARROW) {
-        rightSwap();
+        turnRight();
       }
       codes = [];
     }
