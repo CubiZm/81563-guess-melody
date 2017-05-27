@@ -49,7 +49,7 @@
   };
 
   const onKeyup = (evt) => {
-    codes = [];
+    codes.pop(codes[1])
   };
 
   showScreen();
