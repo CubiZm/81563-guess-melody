@@ -4,53 +4,57 @@
     RIGHT: 39,
     ALT: 18
   };
-
+  const START_SCREEN = `main--welcome`;
   const appElement = document.querySelector(`.app`);
   const template = document.querySelector(`#templates`).content;
-  const arrTemplates = [...template.querySelectorAll(`.main`)];
-  const startScreen = `main--welcome`;
-  const startScreenIndex = arrTemplates.findIndex((screen) => screen.classList.contains(startScreen));
+  const screenElements = [...template.querySelectorAll(`.main`)];
+  const startScreenIndex = screenElements.findIndex((screen) => screen.classList.contains(START_SCREEN));
+  const max = screenElements.length;
   let currentIndex = startScreenIndex;
-  let step = arrTemplates.length;
   let codes = [];
 
   const showScreen = () => {
-    const stepContent = arrTemplates[currentIndex];
+    const stepContent = screenElements[currentIndex];
     appElement.innerHTML = ``;
     appElement.appendChild(stepContent);
   };
 
-  const turnRight = () => {
-    currentIndex = currentIndex === step - 1 ? 0 : currentIndex + 1;
+  const turn = (isLeft = true) => {
+    if (isLeft) {
+      currentIndex = (max + currentIndex - 1) % max;
+    } else {
+      currentIndex = (currentIndex + 1) % max;
+    }
+
+    showScreen(currentIndex);
   };
 
-  const turnLeft = () => {
-    currentIndex = currentIndex ? currentIndex - 1 : step - 1;
-  };
-
-  const changeScreen = (evt) => {
+  const onKeydown = (evt) => {
     codes.push(evt.keyCode);
-    let ALT = codes[0] === KeyCode.ALT;
-    let LEFT_ARROW = codes[1] === KeyCode.LEFT;
-    let RIGHT_ARROW = codes[1] === KeyCode.RIGHT;
-    if (codes.length === 2) {
-      if (ALT && LEFT_ARROW) {
-        turnLeft();
-      } else if (ALT && RIGHT_ARROW) {
-        turnRight();
-      }
+    const isAltPressedFirst = codes[0] === KeyCode.ALT;
+
+    if (!isAltPressedFirst || codes.length !== 2) {
+      return;
+    }
+
+    const secondCode = codes[1];
+
+    if (secondCode === KeyCode.LEFT) {
+      turn(true);
+      codes = [];
+    } else if (secondCode === KeyCode.RIGHT) {
+      turn(false);
       codes = [];
     }
-    showScreen();
   };
 
-  const clearPressKeys = (evt) => {
+  const onKeyup = (evt) => {
     codes = [];
   };
 
   showScreen();
 
-  document.addEventListener(`keydown`, changeScreen);
-  document.addEventListener(`keyup`, clearPressKeys);
+  document.addEventListener(`keydown`, onKeydown);
+  document.addEventListener(`keyup`, onKeyup);
 
 }());
