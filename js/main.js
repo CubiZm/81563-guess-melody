@@ -41,10 +41,8 @@
 
     if (secondCode === KeyCode.LEFT) {
       turn(true);
-      codes = [];
     } else if (secondCode === KeyCode.RIGHT) {
       turn(false);
-      codes = [];
     }
   };
 
