@@ -13,6 +13,10 @@
   let currentIndex = startScreenIndex;
   let codes = [];
 
+  if (startScreenIndex < 0 || null) {
+    return;
+  }
+
   const showScreen = () => {
     const stepContent = screenElements[currentIndex];
     appElement.innerHTML = ``;
@@ -46,13 +50,12 @@
     }
   };
 
-  const onKeyup = (evt) => {
-    codes.pop(codes[1]);
+  const onKeyup = () => {
+    codes.pop();
   };
-
-  showScreen();
 
   document.addEventListener(`keydown`, onKeydown);
   document.addEventListener(`keyup`, onKeyup);
 
+  showScreen(startScreenIndex);
 }());
