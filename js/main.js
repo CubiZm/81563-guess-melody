@@ -17,8 +17,8 @@
     return;
   }
 
-  const showScreen = () => {
-    const stepContent = screenElements[currentIndex];
+  const showScreen = (index) => {
+    const stepContent = screenElements[index];
     appElement.innerHTML = ``;
     appElement.appendChild(stepContent);
   };
