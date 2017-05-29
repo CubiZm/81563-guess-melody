@@ -1,5 +1,6 @@
 import createTemplate from '../create-templates';
 import showScreen from '../show-screen';
+import levelGenre from '../templates/level-genre';
 
 const levelArtist = createTemplate(`
   <section class="main main--level main--level-artist">
@@ -49,5 +50,14 @@ const levelArtist = createTemplate(`
     </div>
   </section>
 `);
+
+const showScreenHandler = (evt) => {
+  if (evt.target.className === `main-answer-r`) {
+    showScreen(levelGenre);
+  }
+};
+
+const button = levelArtist.querySelector(`.main-list`);
+button.addEventListener(`click`, showScreenHandler);
 
 export default levelArtist;

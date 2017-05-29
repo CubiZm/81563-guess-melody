@@ -1,5 +1,6 @@
 import createTemplate from '../create-templates';
 import showScreen from '../show-screen';
+import startScreen from '../templates/start-screen';
 
 const badResult = createTemplate(`
   <section class="main main--result">
@@ -10,4 +11,12 @@ const badResult = createTemplate(`
     <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
   </section>
 `);
+
+const showScreenHandler = () => {
+  showScreen(startScreen);
+};
+
+const button = badResult.querySelector(`.main-replay`);
+button.addEventListener(`click`, showScreenHandler);
+
 export default badResult;
