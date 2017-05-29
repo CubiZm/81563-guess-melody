@@ -1,8 +1,8 @@
-import createTemplate from '../create-templates';
+import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import startScreen from '../templates/start-screen';
 
-const badResult = createTemplate(`
+const resultFalse = createTemplate(`
   <section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
@@ -16,7 +16,7 @@ const showScreenHandler = () => {
   showScreen(startScreen);
 };
 
-const button = badResult.querySelector(`.main-replay`);
-button.addEventListener(`click`, showScreenHandler);
+const buttonElement = resultFalse.querySelector(`.main-replay`);
+buttonElement.addEventListener(`click`, showScreenHandler);
 
-export default badResult;
+export default resultFalse;

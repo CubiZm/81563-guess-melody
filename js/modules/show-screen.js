@@ -1,6 +1,7 @@
 const appElement = document.querySelector(`section.main`);
-const showScreen = (stepContent) => {
+
+const showScreen = (template) => {
   appElement.innerHTML = ``;
-  appElement.appendChild(stepContent);
+  appElement.appendChild(template);
 };
 export default showScreen;

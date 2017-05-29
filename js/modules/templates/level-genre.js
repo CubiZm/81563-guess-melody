@@ -1,5 +1,7 @@
-import createTemplate from '../create-templates';
+import createTemplate from '../create-template';
 import showScreen from '../show-screen';
+import resultSuccess from './result-success';
+import resultFalse from './result-false';
 
 const levelGenre = createTemplate(`
   <section class="main main--level main--level-genre">
@@ -33,5 +35,17 @@ const levelGenre = createTemplate(`
     </form>
   </section>
 `);
+
+const showScreenHandler = () => {
+  // Тут нужно вывести логику
+  // showScreen(startScreen);
+};
+
+const buttonElement = levelGenre.querySelector(`.genre-answer-send`);
+const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
+setButtonDisabled();
+buttonElement.addEventListener(`click`, showScreenHandler);
+
+showScreen(levelGenre);
 
 export default levelGenre;

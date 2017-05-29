@@ -1,4 +1,4 @@
-import createTemplate from '../create-templates';
+import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import levelGenre from '../templates/level-genre';
 
@@ -51,13 +51,13 @@ const levelArtist = createTemplate(`
   </section>
 `);
 
-const showScreenHandler = (evt) => {
+const showScreenHandler = (evt) => { // впихнуть деструкцию о__О
   if (evt.target.className === `main-answer-r`) {
     showScreen(levelGenre);
   }
 };
 
-const button = levelArtist.querySelector(`.main-list`);
-button.addEventListener(`click`, showScreenHandler);
+const buttonElement = levelArtist.querySelector(`.main-list`);
+buttonElement.addEventListener(`click`, showScreenHandler);
 
 export default levelArtist;

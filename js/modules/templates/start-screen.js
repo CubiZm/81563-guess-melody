@@ -1,4 +1,4 @@
-import createTemplate from '../create-templates';
+import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import levelArtist from '../templates/level-artist';
 
@@ -19,7 +19,7 @@ const showScreenHandler = () => {
   showScreen(levelArtist);
 };
 
-const button = startScreen.querySelector(`.main-play`);
-button.addEventListener(`click`, showScreenHandler);
+const buttonElement = startScreen.querySelector(`.main-play`);
+buttonElement.addEventListener(`click`, showScreenHandler);
 
 export default startScreen;
