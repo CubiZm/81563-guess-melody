@@ -1,3 +1,6 @@
+import createTemplate from '../create-templates';
+import showScreen from '../show-screen';
+
 const levelGenre = createTemplate(`
   <section class="main main--level main--level-genre">
     <h2 class="title">Выберите инди-рок треки</h2>

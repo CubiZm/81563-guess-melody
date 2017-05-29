@@ -1,7 +1,6 @@
 import createTemplate from '../create-templates';
 import showScreen from '../show-screen';
-// const START_SCREEN = `main--welcome`;
-// const startScreenIndex = screenElements.findIndex((screen) => screen.classList.contains(START_SCREEN));
+import levelArtist from '../templates/level-artist';
 
 const startScreen = createTemplate(`
   <section class="main main--welcome">
@@ -15,4 +14,12 @@ const startScreen = createTemplate(`
     </p>
   </section>
 `);
+
+const showScreenHandler = () => {
+  showScreen(levelArtist);
+};
+
+const button = startScreen.querySelector(`.main-play`);
+button.addEventListener(`click`, showScreenHandler);
+
 export default startScreen;
