@@ -1,4 +1,9 @@
-const startScreen = getElementFromTemplate(`
+import createTemplate from './modules/create-templates';
+
+// const START_SCREEN = `main--welcome`;
+// const startScreenIndex = screenElements.findIndex((screen) => screen.classList.contains(START_SCREEN));
+
+const startScreen = createTemplate(`
   <section class="main main--welcome">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
     <button class="main-play">Начать игру</button>
