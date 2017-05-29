@@ -1,5 +1,5 @@
-import createTemplate from './modules/create-templates';
-
+import createTemplate from '../create-templates';
+import showScreen from '../show-screen';
 // const START_SCREEN = `main--welcome`;
 // const startScreenIndex = screenElements.findIndex((screen) => screen.classList.contains(START_SCREEN));
 

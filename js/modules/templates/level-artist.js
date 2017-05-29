@@ -1,7 +1,3 @@
-import createTemplate from '../create-templates';
-import showScreen from '../show-screen';
-import levelGenre from './level-genre';
-
 const levelArtist = createTemplate(`
   <section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
