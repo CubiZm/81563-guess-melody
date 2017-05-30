@@ -36,15 +36,53 @@ const levelGenre = createTemplate(`
   </section>
 `);
 
-const showScreenHandler = () => {
-  // Тут нужно вывести логику
-  // showScreen(startScreen);
+const doRandomResult = () => {
+  let rand = Math.floor(Math.random() * 2);
+  if (rand < 1) {
+    showScreen(resultSuccess);
+  } else {
+    showScreen(resultFalse);
+  }
+};
+
+const checkboxHandler = () => {
+  for (let i of getGenre) {
+    if (i.type === `checkbox`) {
+      if (i.checked === true) {
+        buttonElement.removeAttribute(`disabled`);
+        break;
+      } else {
+        setButtonDisabled();
+      }
+    }
+  }
+};
+
+const showScreenHandler = (evt) => {
+  evt.preventDefault();
+  doRandomResult();
+};
+
+// Не могу сообразить как сбрасывать всё по сабмиту.
+// вот это не работает :(
+const clearAnswer = () => {
+  for (let i of getGenre) {
+    if (i.type === `checkbox`) {
+      i.checked === false;
+    }
+  }
 };
 
 const buttonElement = levelGenre.querySelector(`.genre-answer-send`);
+const getGenre = levelGenre.querySelector(`.genre`);
 const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
 setButtonDisabled();
+const replayGame = document.querySelector(`.main-replay`);
+
 buttonElement.addEventListener(`click`, showScreenHandler);
+buttonElement.addEventListener(`click`, doRandomResult);
+getGenre.addEventListener(`change`, checkboxHandler);
+buttonElement.addEventListener(`submit`, clearAnswer);
 
 showScreen(levelGenre);
 

@@ -51,7 +51,7 @@ const levelArtist = createTemplate(`
   </section>
 `);
 
-const showScreenHandler = (evt) => { // впихнуть деструкцию о__О
+const showScreenHandler = (evt) => {
   if (evt.target.className === `main-answer-r`) {
     showScreen(levelGenre);
   }
