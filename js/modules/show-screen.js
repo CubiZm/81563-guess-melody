@@ -4,4 +4,5 @@ const showScreen = (template) => {
   appElement.innerHTML = ``;
   appElement.appendChild(template);
 };
+
 export default showScreen;

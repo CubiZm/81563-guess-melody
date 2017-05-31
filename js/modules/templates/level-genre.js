@@ -65,24 +65,24 @@ const showScreenHandler = (evt) => {
 
 // Не могу сообразить как сбрасывать всё по сабмиту.
 // вот это не работает :(
-const clearAnswer = () => {
-  for (let i of getGenre) {
-    if (i.type === `checkbox`) {
-      i.checked === false;
-    }
-  }
-};
+// const clearAnswer = () => {
+//   for (let i of getGenre) {
+//     if (i.type === `checkbox`) {
+//       i.checked === false;
+//     }
+//   }
+// };
 
 const buttonElement = levelGenre.querySelector(`.genre-answer-send`);
 const getGenre = levelGenre.querySelector(`.genre`);
 const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
 setButtonDisabled();
-const replayGame = document.querySelector(`.main-replay`);
+// const replayGame = document.querySelector(`.main-replay`);
 
 buttonElement.addEventListener(`click`, showScreenHandler);
 buttonElement.addEventListener(`click`, doRandomResult);
 getGenre.addEventListener(`change`, checkboxHandler);
-buttonElement.addEventListener(`submit`, clearAnswer);
+// buttonElement.addEventListener(`submit`, clearAnswer);
 
 showScreen(levelGenre);
 
