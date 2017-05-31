@@ -2,7 +2,7 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import levelArtist from '../templates/level-artist';
 
-const startScreen = createTemplate(`
+const template = createTemplate(`
   <section class="main main--welcome">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
     <button class="main-play">Начать игру</button>
@@ -19,7 +19,7 @@ const showScreenHandler = () => {
   showScreen(levelArtist);
 };
 
-const buttonElement = startScreen.querySelector(`.main-play`);
+const buttonElement = template.querySelector(`.main-play`);
 buttonElement.addEventListener(`click`, showScreenHandler);
 
-export default startScreen;
+export default template;

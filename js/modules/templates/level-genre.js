@@ -3,7 +3,7 @@ import showScreen from '../show-screen';
 import resultSuccess from './result-success';
 import resultFalse from './result-false';
 
-const levelGenre = createTemplate(`
+const template = createTemplate(`
   <section class="main main--level main--level-genre">
     <h2 class="title">Выберите инди-рок треки</h2>
     <form class="genre">
@@ -15,19 +15,19 @@ const levelGenre = createTemplate(`
 
       <div class="genre-answer">
         <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-2">
+        <input type="checkbox" name="answer" value="answer-2" id="a-2">
         <label class="genre-answer-check" for="a-2"></label>
       </div>
 
       <div class="genre-answer">
         <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-3">
+        <input type="checkbox" name="answer" value="answer-3" id="a-3">
         <label class="genre-answer-check" for="a-3"></label>
       </div>
 
       <div class="genre-answer">
         <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-4">
+        <input type="checkbox" name="answer" value="answer-4" id="a-4">
         <label class="genre-answer-check" for="a-4"></label>
       </div>
 
@@ -36,25 +36,24 @@ const levelGenre = createTemplate(`
   </section>
 `);
 
+const buttonElement = template.querySelector(`.genre-answer-send`);
+const formElement = template.querySelector(`.genre`);
+const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
+setButtonDisabled();
+const checkboxElements = [...formElement.elements.answer];
+
 const doRandomResult = () => {
-  let rand = Math.floor(Math.random() * 2);
-  if (rand < 1) {
-    showScreen(resultSuccess);
-  } else {
-    showScreen(resultFalse);
-  }
+  let random = Math.floor(Math.random() * 2);
+  const result = random < 1 ? resultSuccess : resultFalse;
+  showScreen(result);
 };
 
 const checkboxHandler = () => {
-  for (let i of getGenre) {
-    if (i.type === `checkbox`) {
-      if (i.checked === true) {
-        buttonElement.removeAttribute(`disabled`);
-        break;
-      } else {
-        setButtonDisabled();
-      }
-    }
+  const isSomeChecked = checkboxElements.some((checkbox) => checkbox.checked);
+  if (isSomeChecked) {
+    buttonElement.removeAttribute(`disabled`);
+  } else {
+    setButtonDisabled(isSomeChecked);
   }
 };
 
@@ -63,27 +62,18 @@ const showScreenHandler = (evt) => {
   doRandomResult();
 };
 
-// Не могу сообразить как сбрасывать всё по сабмиту.
-// вот это не работает :(
-// const clearAnswer = () => {
-//   for (let i of getGenre) {
-//     if (i.type === `checkbox`) {
-//       i.checked === false;
-//     }
-//   }
-// };
+const clearAnswer = () => {
+  console.log(checkboxElements);
+  //setButtonDisabled();
+};
 
-const buttonElement = levelGenre.querySelector(`.genre-answer-send`);
-const getGenre = levelGenre.querySelector(`.genre`);
-const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
-setButtonDisabled();
 // const replayGame = document.querySelector(`.main-replay`);
 
 buttonElement.addEventListener(`click`, showScreenHandler);
 buttonElement.addEventListener(`click`, doRandomResult);
-getGenre.addEventListener(`change`, checkboxHandler);
-// buttonElement.addEventListener(`submit`, clearAnswer);
+formElement.addEventListener(`change`, checkboxHandler);
+buttonElement.addEventListener(`click`, clearAnswer);
 
-showScreen(levelGenre);
+showScreen(template);
 
-export default levelGenre;
+export default template;

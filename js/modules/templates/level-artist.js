@@ -2,7 +2,7 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import levelGenre from '../templates/level-genre';
 
-const levelArtist = createTemplate(`
+const template = createTemplate(`
   <section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
@@ -51,13 +51,13 @@ const levelArtist = createTemplate(`
   </section>
 `);
 
-const showScreenHandler = (evt) => {
-  if (evt.target.className === `main-answer-r`) {
+const showScreenHandler = ({target}) => {
+  if (target.classList.contains(`main-answer-r`)) {
     showScreen(levelGenre);
   }
 };
 
-const buttonElement = levelArtist.querySelector(`.main-list`);
+const buttonElement = template.querySelector(`.main-list`);
 buttonElement.addEventListener(`click`, showScreenHandler);
 
-export default levelArtist;
+export default template;
