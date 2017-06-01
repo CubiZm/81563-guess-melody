@@ -38,7 +38,6 @@ const template = createTemplate(`
 
 const buttonElement = template.querySelector(`.genre-answer-send`);
 const formElement = template.querySelector(`.genre`);
-//const setButtonDisabled = () => buttonElement.setAttribute(`disabled`, `disabled`);
 let checkboxElements = [...formElement.elements.answer];
 const setButtonDisabled = (isDisabled) => !isDisabled ? buttonElement.setAttribute(`disabled`, `disabled`) : true;
 setButtonDisabled();
@@ -50,7 +49,6 @@ const doRandomResult = () => {
 
 const checkboxHandler = () => {
   const isSomeChecked = checkboxElements.some((checkbox) => checkbox.checked);
-  //console.log(isSomeChecked);
   if (isSomeChecked) {
     buttonElement.removeAttribute(`disabled`);
   } else {
