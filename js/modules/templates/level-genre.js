@@ -38,22 +38,12 @@ const template = createTemplate(`
 
 const buttonElement = template.querySelector(`.genre-answer-send`);
 const formElement = template.querySelector(`.genre`);
-let checkboxElements = [...formElement.elements.answer];
-const setButtonDisabled = (isDisabled) => !isDisabled ? buttonElement.setAttribute(`disabled`, `disabled`) : true;
-setButtonDisabled();
+const setButtonDisabled = (isDisabled) => !isDisabled ? buttonElement.setAttribute(`disabled`, `disabled`) : buttonElement.removeAttribute(`disabled`, `disabled`);
+
 const doRandomResult = () => {
   let random = Math.floor(Math.random() * 2);
   const result = random < 1 ? resultSuccess : resultFalse;
   showScreen(result);
-};
-
-const checkboxHandler = () => {
-  const isSomeChecked = checkboxElements.some((checkbox) => checkbox.checked);
-  if (isSomeChecked) {
-    buttonElement.removeAttribute(`disabled`);
-  } else {
-    setButtonDisabled();
-  }
 };
 
 const showScreenHandler = (evt) => {
@@ -61,21 +51,21 @@ const showScreenHandler = (evt) => {
   doRandomResult();
 };
 
+const uncheck = (checkboxElements) => {
+  checkboxElements.checked = false;
+};
+
 const clearUp = () => {
-  const uncheck = template.getElementsByTagName(`input`);
-  for (let i = 0; i < uncheck.length; i++) {
-    if (uncheck[i].type === `checkbox`) {
-      uncheck[i].checked = false;
-      setButtonDisabled();
-    }
-  }
+  [].forEach.call(template.querySelectorAll(`[type="checkbox"]`), uncheck);
+  setButtonDisabled();
 };
 
 buttonElement.addEventListener(`click`, showScreenHandler);
 buttonElement.addEventListener(`click`, doRandomResult);
-formElement.addEventListener(`change`, checkboxHandler);
+formElement.addEventListener(`change`, setButtonDisabled);
 buttonElement.addEventListener(`click`, clearUp);
 
+setButtonDisabled();
 showScreen(template);
 
 export default template;
