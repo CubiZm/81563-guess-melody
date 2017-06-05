@@ -12,25 +12,21 @@ const template = createTemplate(`
         <input type="checkbox" name="answer" value="answer-1" id="a-1">
         <label class="genre-answer-check" for="a-1"></label>
       </div>
-
       <div class="genre-answer">
         <div class="player-wrapper"></div>
         <input type="checkbox" name="answer" value="answer-2" id="a-2">
         <label class="genre-answer-check" for="a-2"></label>
       </div>
-
       <div class="genre-answer">
         <div class="player-wrapper"></div>
         <input type="checkbox" name="answer" value="answer-3" id="a-3">
         <label class="genre-answer-check" for="a-3"></label>
       </div>
-
       <div class="genre-answer">
         <div class="player-wrapper"></div>
         <input type="checkbox" name="answer" value="answer-4" id="a-4">
         <label class="genre-answer-check" for="a-4"></label>
       </div>
-
       <button class="genre-answer-send" type="submit">Ответить</button>
     </form>
   </section>
@@ -38,7 +34,15 @@ const template = createTemplate(`
 
 const buttonElement = template.querySelector(`.genre-answer-send`);
 const formElement = template.querySelector(`.genre`);
-const setButtonDisabled = (isDisabled) => !isDisabled ? buttonElement.setAttribute(`disabled`, `disabled`) : buttonElement.removeAttribute(`disabled`, `disabled`);
+const checkboxElements = [...template.querySelectorAll(`[type="checkbox"]`)];
+
+const setButtonDisabled = (isChecked) => {
+  if (!isChecked) {
+    buttonElement.setAttribute(`disabled`, `disabled`);
+  } else {
+    buttonElement.removeAttribute(`disabled`, `disabled`);
+  }
+};
 
 const doRandomResult = () => {
   let random = Math.floor(Math.random() * 2);
@@ -47,23 +51,19 @@ const doRandomResult = () => {
 };
 
 const showScreenHandler = (evt) => {
-  evt.preventDefault();
   doRandomResult();
 };
 
-const uncheck = (checkboxElements) => {
-  checkboxElements.checked = false;
-};
-
 const clearUp = () => {
-  [].forEach.call(template.querySelectorAll(`[type="checkbox"]`), uncheck);
+  checkboxElements.forEach(function (i) {
+    i.checked = false;
+  });
   setButtonDisabled();
 };
 
 buttonElement.addEventListener(`click`, showScreenHandler);
-buttonElement.addEventListener(`click`, doRandomResult);
 formElement.addEventListener(`change`, setButtonDisabled);
-buttonElement.addEventListener(`click`, clearUp);
+formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
 showScreen(template);
