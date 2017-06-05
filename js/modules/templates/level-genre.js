@@ -50,7 +50,7 @@ const doRandomResult = () => {
   showScreen(result);
 };
 
-const showScreenHandler = (evt) => {
+const showScreenHandler = () => {
   doRandomResult();
 };
 
