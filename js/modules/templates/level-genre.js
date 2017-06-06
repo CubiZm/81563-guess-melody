@@ -65,6 +65,6 @@ buttonElement.addEventListener(`click`, showScreenHandler);
 formElement.addEventListener(`change`, setButtonDisabled);
 formElement.addEventListener(`submit`, clearUp);
 
-setButtonDisabled();
+setButtonDisabled(false);
 
 export default template;
