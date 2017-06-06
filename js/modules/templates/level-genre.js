@@ -36,12 +36,17 @@ const buttonElement = template.querySelector(`.genre-answer-send`);
 const formElement = template.querySelector(`.genre`);
 const checkboxElements = [...template.querySelectorAll(`[type="checkbox"]`)];
 
-const setButtonDisabled = (isChecked) => {
-  if (!isChecked) {
-    buttonElement.setAttribute(`disabled`, `disabled`);
-  } else {
-    buttonElement.removeAttribute(`disabled`, `disabled`);
-  }
+const setButtonDisabled = () => {
+  let isFormCorrect = false;
+
+  checkboxElements.forEach((i) => {
+    if (i.checked) {
+      isFormCorrect = true;
+      return;
+    }
+  });
+
+  buttonElement.disabled = !isFormCorrect;
 };
 
 const doRandomResult = () => {
@@ -58,13 +63,13 @@ const clearUp = () => {
   checkboxElements.forEach((i) => {
     i.checked = false;
   });
-  setButtonDisabled(false);
+  setButtonDisabled();
 };
 
 buttonElement.addEventListener(`click`, showScreenHandler);
 formElement.addEventListener(`change`, setButtonDisabled);
 formElement.addEventListener(`submit`, clearUp);
 
-setButtonDisabled(false);
+setButtonDisabled();
 
 export default template;
