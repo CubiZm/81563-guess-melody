@@ -55,10 +55,10 @@ const showScreenHandler = () => {
 };
 
 const clearUp = () => {
-  checkboxElements.forEach(function (i) {
+  checkboxElements.forEach((i) => {
     i.checked = false;
   });
-  setButtonDisabled();
+  setButtonDisabled(false);
 };
 
 buttonElement.addEventListener(`click`, showScreenHandler);
@@ -66,6 +66,5 @@ formElement.addEventListener(`change`, setButtonDisabled);
 formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
-showScreen(template);
 
 export default template;
