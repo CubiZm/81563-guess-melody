@@ -66,13 +66,13 @@ const clearUp = () => {
   checkboxElements.forEach((i) => {
     i.checked = false;
   });
-  setButtonDisabled();
+  setButtonDisabled(!validateForm);
 };
 
 buttonElement.addEventListener(`click`, showScreenHandler);
 formElement.addEventListener(`change`, formChangeHandler);
 formElement.addEventListener(`submit`, clearUp);
 
-setButtonDisabled();
+setButtonDisabled(!validateForm);
 
 export default template;
