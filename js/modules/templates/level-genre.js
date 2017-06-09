@@ -2,10 +2,11 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import resultSuccess from './result-success';
 import resultFalse from './result-false';
+import data from '../data/data';
 
 const template = createTemplate(`
   <section class="main main--level main--level-genre">
-    <h2 class="title">Выберите инди-рок треки</h2>
+    <h2 class="title">>${data.pages.levelGenre.title}</h2>
     <form class="genre">
       <div class="genre-answer">
         <div class="player-wrapper"></div>

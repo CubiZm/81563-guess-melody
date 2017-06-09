@@ -1,6 +1,7 @@
 import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import levelGenre from '../templates/level-genre';
+import data from '../data/data';
 
 const template = createTemplate(`
   <section class="main main--level main--level-artist">

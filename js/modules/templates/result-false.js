@@ -1,6 +1,7 @@
 import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import startScreen from '../templates/start-screen';
+import data from '../data/data';
 
 const template = createTemplate(`
   <section class="main main--result">
