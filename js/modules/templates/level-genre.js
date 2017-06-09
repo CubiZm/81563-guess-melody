@@ -2,11 +2,14 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import resultSuccess from './result-success';
 import resultFalse from './result-false';
-import data from '../data/data';
+// import initializePlayer from '../../player';
+import data from '../data/title';
+// import genre from '../data/level-genre';
+
 
 const template = createTemplate(`
   <section class="main main--level main--level-genre">
-    <h2 class="title">>${data.pages.levelGenre.title}</h2>
+    <h2 class="title">${data.pages.levelGenre.title}</h2>
     <form class="genre">
       <div class="genre-answer">
         <div class="player-wrapper"></div>
@@ -69,5 +72,7 @@ formElement.addEventListener(`change`, formChangeHandler);
 formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
+
+// initializePlayer(template.querySelector(`[id="a-1']`), genre.genre1.audioUrl, false);
 
 export default template;
