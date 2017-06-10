@@ -1,8 +1,23 @@
-const Data = {
-  genre1: {
-    id: `1`,
-    audioUrl: `audio/Rumba_Sabor.mp3`
-  }
+const data = {
+  title: `Выберите хиты лета`,
+  genre: [
+    {
+      id: `1`,
+      audioUrl: `audio/7th_Floor_Tango.mp3`
+    },
+    {
+      id: `2`,
+      audioUrl: `audio/Rumba_Sabor.mp3`
+    },
+    {
+      id: `3`,
+      audioUrl: `audio/Tango_Bango.mp3`
+    },
+    {
+      id: `4`,
+      audioUrl: `audio/Taking_a_Beating.mp3`
+    }
+  ]
 };
 
-export default Data;
+export default data;

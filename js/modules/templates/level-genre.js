@@ -2,35 +2,15 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import resultSuccess from './result-success';
 import resultFalse from './result-false';
-// import initializePlayer from '../../player';
-import data from '../data/title';
-// import genre from '../data/level-genre';
-
+import initializePlayer from '../../player';
+import data from '../data/level-genre';
+import getTemplate from './genre-template';
 
 const template = createTemplate(`
   <section class="main main--level main--level-genre">
-    <h2 class="title">${data.pages.levelGenre.title}</h2>
+    <h2 class="title">${data.title}</h2>
     <form class="genre">
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-1">
-        <label class="genre-answer-check" for="a-1"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-2" id="a-2">
-        <label class="genre-answer-check" for="a-2"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-3" id="a-3">
-        <label class="genre-answer-check" for="a-3"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-4" id="a-4">
-        <label class="genre-answer-check" for="a-4"></label>
-      </div>
+      ${data.genre.map(getTemplate).join(``)}
       <button class="genre-answer-send" type="submit">Ответить</button>
     </form>
   </section>
@@ -72,7 +52,7 @@ formElement.addEventListener(`change`, formChangeHandler);
 formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
-
-// initializePlayer(template.querySelector(`[id="a-1']`), genre.genre1.audioUrl, false);
+console.log(template.querySelector(`a-1`));
+//initializePlayer(template.querySelector(`[id="a-1']`), data.genre.audioUrl, false);
 
 export default template;

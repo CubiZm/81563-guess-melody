@@ -1,8 +1,8 @@
-const Data = {
+const data = {
   stats: {
     startMinutes: `02`,
     startSeconds: `00`
   }
 };
 
-export default Data;
+export default data;
