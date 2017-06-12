@@ -2,7 +2,7 @@ import createTemplate from '../create-template';
 import showScreen from '../show-screen';
 import resultSuccess from './result-success';
 import resultFalse from './result-false';
-import initializePlayer from '../../player';
+// import initializePlayer from '../../player';
 import data from '../data/level-genre';
 import getTemplate from './genre-template';
 
@@ -52,7 +52,6 @@ formElement.addEventListener(`change`, formChangeHandler);
 formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
-console.log(template.querySelector(`a-1`));
-//initializePlayer(template.querySelector(`[id="a-1']`), data.genre.audioUrl, false);
+// initializePlayer(template.querySelector(`[id="a-1']`), data.genre.audioUrl, false);
 
 export default template;

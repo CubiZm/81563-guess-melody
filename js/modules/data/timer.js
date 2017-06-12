@@ -1,7 +1,7 @@
 const data = {
   stats: {
-    startMinutes: `02`,
-    startSeconds: `00`
+    startMinutes: 2,
+    startSeconds: 0
   }
 };
 
