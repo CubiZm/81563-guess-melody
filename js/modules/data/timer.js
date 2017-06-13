@@ -1,8 +1,8 @@
-const data = {
+import formatTime from '../../time-format';
+
+export default {
   stats: {
-    startMinutes: 2,
-    startSeconds: 0
+    startMinutes: formatTime(120000, 0).minutes,
+    startSeconds: formatTime(120000, 0).seconds
   }
 };
-
-export default data;

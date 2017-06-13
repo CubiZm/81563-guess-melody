@@ -4,6 +4,10 @@ import levelGenre from '../templates/level-genre';
 import data from '../data/level-artist';
 import getTemplate from './artist-template';
 import getTimer from './timer-templates';
+import initializePlayer from '../../player';
+
+
+// console.log(formatTime(120000, 0).minutes);
 
 const template = `
   <section class="main main--level main--level-artist">
@@ -23,7 +27,7 @@ const template = `
       <h2 class="title main-title">Кто исполняет эту песню?</h2>
       <div class="player-wrapper"></div>
       <form class="main-list">
-        ${data.artist.map(getTemplate).join(``)}
+        ${data.artists.map(getTemplate).join(``)}
       </form>
       </div>
     </div>
@@ -31,6 +35,7 @@ const template = `
 `;
 
 const renderTemplate = createTemplate(template);
+const playerWrapper = renderTemplate.querySelector(`.player-wrapper`);
 
 const showScreenHandler = ({target}) => {
   if (target.classList.contains(`main-answer-r`)) {
@@ -40,5 +45,6 @@ const showScreenHandler = ({target}) => {
 
 const buttonElement = renderTemplate.querySelector(`.main-list`);
 buttonElement.addEventListener(`click`, showScreenHandler);
+initializePlayer(playerWrapper, data.audioUrl);
 
 export default renderTemplate;
