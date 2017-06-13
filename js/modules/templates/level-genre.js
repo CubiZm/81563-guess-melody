@@ -6,19 +6,20 @@ import resultFalse from './result-false';
 import data from '../data/level-genre';
 import getTemplate from './genre-template';
 
-const template = createTemplate(`
+const template = `
   <section class="main main--level main--level-genre">
-    <h2 class="title">${data.title}</h2>
+    <h2 class="title">Выберите хиты лета</h2>
     <form class="genre">
       ${data.genre.map(getTemplate).join(``)}
       <button class="genre-answer-send" type="submit">Ответить</button>
     </form>
-  </section>
-`);
+  </section>`;
 
-const buttonElement = template.querySelector(`.genre-answer-send`);
-const formElement = template.querySelector(`.genre`);
-const checkboxElements = [...template.querySelectorAll(`[type="checkbox"]`)];
+const renderTemplate = createTemplate(template);
+
+const buttonElement = renderTemplate.querySelector(`.genre-answer-send`);
+const formElement = renderTemplate.querySelector(`.genre`);
+const checkboxElements = [...renderTemplate.querySelectorAll(`[type="checkbox"]`)];
 
 const setButtonDisabled = () => {
   let isFormCorrect = checkboxElements.some((checkbox) => checkbox.checked);
@@ -52,6 +53,6 @@ formElement.addEventListener(`change`, formChangeHandler);
 formElement.addEventListener(`submit`, clearUp);
 
 setButtonDisabled();
-// initializePlayer(template.querySelector(`[id="a-1']`), data.genre.audioUrl, false);
+// initializePlayer(renderTemplate.querySelector(`[id="a-1']`), data.genre.audioUrl, false);
 
-export default template;
+export default renderTemplate;

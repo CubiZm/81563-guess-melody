@@ -1,5 +1,4 @@
 const data = {
-  title: `Выберите хиты лета`,
   genre: [
     {
       id: 1,
