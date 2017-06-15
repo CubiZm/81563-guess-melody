@@ -34,15 +34,18 @@
 }
 
 .player-control {
-  background: url("../img/icon-player-controls-sprite.png") no-repeat 0 0;
+  background: url("../img/icon-player-controls-sprite.png") no-repeat;
+  background-position: 0 0px;
   border: 0;
   text-indent: -100em;
   height: 53px;
   width: 39px;
+  transition: all 0.5s;
 }
 
-.player--is-playing .player-control {
+.player--is-playing {
   background-position: 0 -53px;
+  transition: all 0.5s;
 }
 
 .player--no-controls .player-control {

@@ -3,11 +3,10 @@ import showScreen from '../show-screen';
 import levelGenre from '../templates/level-genre';
 import data from '../data/level-artist';
 import getTemplate from './artist-template';
-import getTimer from './timer-templates';
+//import getTimer from './timer-templates';
 import initializePlayer from '../../player';
 
-
-// console.log(formatTime(120000, 0).minutes);
+export default ({artists, getTimer}) => {
 
 const template = `
   <section class="main main--level main--level-artist">
@@ -27,24 +26,24 @@ const template = `
       <h2 class="title main-title">Кто исполняет эту песню?</h2>
       <div class="player-wrapper"></div>
       <form class="main-list">
-        ${data.artists.map(getTemplate).join(``)}
+        ${artists.map(getTemplate).join(``)}
       </form>
       </div>
     </div>
   </section>
 `;
+// };
 
-const renderTemplate = createTemplate(template);
-const playerWrapper = renderTemplate.querySelector(`.player-wrapper`);
+const renderTemplate = createTemplate(template(artists, getTimer));
+
+//const playerWrapper = template.querySelector(`.player-wrapper`);
 
 const showScreenHandler = ({target}) => {
   if (target.classList.contains(`main-answer-r`)) {
-    showScreen(levelGenre);
+    showScreen(levelGenre(data));
   }
 };
-
-const buttonElement = renderTemplate.querySelector(`.main-list`);
-buttonElement.addEventListener(`click`, showScreenHandler);
-initializePlayer(playerWrapper, data.audioUrl);
-
-export default renderTemplate;
+}
+//const buttonElement = template.querySelector(`.main-list`);
+//buttonElement.addEventListener(`click`, showScreenHandler);
+//initializePlayer(playerWrapper, data.audioUrl);
