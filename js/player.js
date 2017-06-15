@@ -72,6 +72,9 @@ const initializePlayer = (element, file, autoplay = false, controllable = true) 
   element.classList.toggle(`player--no-controls`, !controllable);
 
   return () => destroyPlayer(element, state);
+
 };
+
+stopFn();
 
 export default initializePlayer;
