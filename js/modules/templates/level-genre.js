@@ -36,11 +36,11 @@ export default ({genre}) => {
   const doRandomResult = () => {
     let random = Math.floor(Math.random() * 2);
     const result = random < 1 ? resultSuccess : resultFalse;
-    showScreen(result(data)); // nen
+    showScreen(result(data));
   };
 
   const showScreenHandler = () => {
-    doRandomResult(); // nen
+    doRandomResult();
   };
 
   const clearUp = () => {

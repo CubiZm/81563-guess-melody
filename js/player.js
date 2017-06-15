@@ -1,3 +1,5 @@
+import stopFn from './animate';
+
 const updateState = (element, player) => {
   element.querySelector(`.player-status`).style.width =
       `${parseInt(player.currentTime * 100 / player.duration, 10)}%`;
