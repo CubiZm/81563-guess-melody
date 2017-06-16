@@ -1,6 +1,6 @@
 import createTemplate from '../create-template';
 import showScreen from '../show-screen';
-import levelGenre from '../templates/level-genre';
+import showLevelGenre from '../templates/level-genre';
 import data from '../data/level-artist';
 import getTemplate from './artist-template';
 import getTimer from './timer-templates';
@@ -39,7 +39,7 @@ export default ({artists}) => {
 
   const showScreenHandler = ({target}) => {
     if (target.classList.contains(`main-answer-r`)) {
-      showScreen(levelGenre(data));
+      showScreen(showLevelGenre(data));
     }
   };
 

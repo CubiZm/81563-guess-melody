@@ -1,6 +1,6 @@
 import createTemplate from '../create-template';
 import showScreen from '../show-screen';
-import startScreen from '../templates/start-screen';
+import showStartScreen from '../templates/start-screen';
 import data from '../data/statistic';
 
 
@@ -18,7 +18,7 @@ export default () => {
   const renderTemplate = createTemplate(template);
 
   const showScreenHandler = () => {
-    showScreen(startScreen(data));
+    showScreen(showStartScreen(data));
   };
 
   const buttonElement = renderTemplate.querySelector(`.main-replay`);
