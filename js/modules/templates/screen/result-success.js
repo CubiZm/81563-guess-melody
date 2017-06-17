@@ -3,7 +3,7 @@ import showScreen from '../../utils/show-screen';
 import showStartScreen from '../screen/start-screen';
 import data from '../../data/statistic';
 
-export default ({time, melodyCount, rating}) => {
+export default () => {
 
   const template = `
     <section class="main main--result">

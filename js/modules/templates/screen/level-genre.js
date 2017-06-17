@@ -11,7 +11,7 @@ export default ({genre}) => {
     <section class="main main--level main--level-genre">
       <h2 class="title">Выберите хиты лета</h2>
       <form class="genre">
-        ${data.genre.map(getTemplate).join(``)}
+        ${genre.map(getTemplate).join(``)}
         <button class="genre-answer-send" type="submit">Ответить</button>
       </form>
     </section>`;
