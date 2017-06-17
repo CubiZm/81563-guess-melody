@@ -1,3 +1,5 @@
+import stopFn from './animate';
+
 const updateState = (element, player) => {
   element.querySelector(`.player-status`).style.width =
       `${parseInt(player.currentTime * 100 / player.duration, 10)}%`;
@@ -10,13 +12,16 @@ const syncState = (player, element) => {
 
 
 const switchState = (state, player, element) => {
+  const button = element.querySelector(`.player-control`);
   if (player.paused) {
     player.play();
+    button.classList.add(`player--is-playing`);
     state.stopAnimation = window.animation.animate(
         window.animation.getAnimation(player.currentTime, 1000, player.duration),
         (animation) => updateState(element, player));
   } else {
     player.pause();
+    button.classList.remove(`player--is-playing`);
     state.stopAnimation();
     state.stopAnimation = null;
   }
@@ -42,7 +47,7 @@ const destroyPlayer = (element, state) => {
 };
 
 
-window.initializePlayer = (element, file, autoplay = false, controllable = true) => {
+const initializePlayer = (element, file, autoplay = false, controllable = true) => {
   let state = {};
 
   const content = document.querySelector(`template`)
@@ -67,4 +72,9 @@ window.initializePlayer = (element, file, autoplay = false, controllable = true)
   element.classList.toggle(`player--no-controls`, !controllable);
 
   return () => destroyPlayer(element, state);
+
 };
+
+stopFn();
+
+export default initializePlayer;
