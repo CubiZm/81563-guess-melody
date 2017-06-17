@@ -1,7 +1,7 @@
-import createTemplate from '../create-template';
-import showScreen from '../show-screen';
-import showStartScreen from '../templates/start-screen';
-import data from '../data/statistic';
+import createTemplate from '../../utils/create-template';
+import showScreen from '../../utils/show-screen';
+import showStartScreen from '../screen/start-screen';
+import data from '../../data/statistic';
 
 export default ({time, melodyCount, rating}) => {
 

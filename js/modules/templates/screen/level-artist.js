@@ -1,10 +1,10 @@
-import createTemplate from '../create-template';
-import showScreen from '../show-screen';
-import showLevelGenre from '../templates/level-genre';
-import data from '../data/level-artist';
-import getTemplate from './artist-template';
-import getTimer from './timer-templates';
-import initializePlayer from '../../player';
+import createTemplate from '../../utils/create-template';
+import showScreen from '../../utils/show-screen';
+import showLevelGenre from './level-genre';
+import data from '../../data/level-artist';
+import getTemplate from '../artist-template';
+import getTimer from '../timer-templates';
+import initializePlayer from '../../../player';
 
 export default ({artists}) => {
 

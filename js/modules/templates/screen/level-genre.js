@@ -1,10 +1,10 @@
-import createTemplate from '../create-template';
-import showScreen from '../show-screen';
-import resultSuccess from './result-success';
-import resultFalse from './result-false';
-import initializePlayer from '../../player';
-import data from '../data/level-genre';
-import getTemplate from './genre-template';
+import createTemplate from '../../utils/create-template';
+import showScreen from '../../utils/show-screen';
+import resultSuccess from '../screen/result-success';
+import resultFalse from '../screen/result-false';
+import initializePlayer from '../../../player';
+import data from '../../data/level-genre';
+import getTemplate from '../genre-template';
 
 export default ({genre}) => {
   const template = `

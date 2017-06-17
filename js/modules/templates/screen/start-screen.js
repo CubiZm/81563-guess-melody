@@ -1,7 +1,7 @@
-import createTemplate from '../create-template';
-import showScreen from '../show-screen';
-import levelArtist from '../templates/level-artist';
-import data from '../data/level-artist';
+import createTemplate from '../../utils/create-template';
+import showScreen from '../../utils/show-screen';
+import levelArtist from '../screen/level-artist';
+import data from '../../data/level-artist';
 
 export default ({time}) => {
 
