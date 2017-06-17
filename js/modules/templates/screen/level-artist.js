@@ -2,6 +2,7 @@ import createTemplate from '../../utils/create-template';
 import showScreen from '../../utils/show-screen';
 import showLevelGenre from './level-genre';
 import data from '../../data/level-genre';
+import track from '../../data/level-artist'
 import getTemplate from '../artist-template';
 import getTimer from '../timer-templates';
 import initializePlayer from '../../../player';
@@ -44,8 +45,7 @@ export default ({artists}) => {
   };
 
   buttonElement.addEventListener(`click`, showScreenHandler);
-
-  initializePlayer(playerWrapper, data.audioUrl);
+  initializePlayer(playerWrapper, track.audioUrl);
 
   return renderTemplate;
 };

@@ -54,7 +54,7 @@ export default ({genre}) => {
   formElement.addEventListener(`change`, formChangeHandler);
   formElement.addEventListener(`submit`, clearUp);
 
-  playerWrappers.forEach((element, id) => initializePlayer(element, data.genre[id].audioUrl, false));
+  playerWrappers.forEach((element, id) => initializePlayer(element, genre[id].audioUrl, false));
   setButtonDisabled();
 
   return renderTemplate;
