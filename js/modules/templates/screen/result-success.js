@@ -2,6 +2,7 @@ import createTemplate from '../../utils/create-template';
 import showScreen from '../../utils/show-screen';
 import showStartScreen from '../screen/start-screen';
 import data from '../../data/statistic';
+import getStatistics from '../user-rating';
 
 export default () => {
 
@@ -11,7 +12,7 @@ export default () => {
 
       <h2 class="title">Вы настоящий меломан!</h2>
       <div class="main-stat">За&nbsp;${data.time}&nbsp;минуты<br>вы&nbsp;отгадали ${data.melodyCount}&nbsp;мелодии</div>
-      <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${data.rating}%&nbsp;игроков</span>
+      <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${getStatistics(data)}%&nbsp;игроков</span>
       <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
     </section>`;
 
