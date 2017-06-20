@@ -1,12 +1,21 @@
-import rating from '../data/rating';
+const compareScores = (a, b) => {
+  if (a.answers === b.answers) {
+    return a.time - b.time;
+  }
 
-export default (item) => {
-  const ratingList = rating.slice();
-  ratingList.push(item);
-  ratingList.sort((a, b) => a.time - b.time);
-  ratingList.sort((a, b) => a.answer - b.answer);
-
-  const position = ratingList.indexOf(item) + 1;
-
-  return Math.round(((ratingList.length - position) / ratingList.length) * 100);
+  return b.answers - a.answers;
 };
+
+export default function getRating(newResult, previousResults) {
+  const allResults = previousResults.concat(newResult);
+
+  allResults.sort(compareScores);
+
+  let newResultPlace = allResults.findIndex((elem) => compareScores(newResult, elem) < 0);
+
+  if (newResultPlace === -1) {
+    newResultPlace = allResults.length;
+  }
+
+  return Math.floor(((allResults.length - newResultPlace) / allResults.length) * 100);
+}
