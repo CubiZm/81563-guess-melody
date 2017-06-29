@@ -4,9 +4,7 @@ const checkAnswer = (submited, correct) => {
   }
 
   if (submited.length === correct.length) {
-    const wrongValues = submited.filter((elem) => correct.indexOf(elem) === -1);
-
-    return wrongValues.length === 0;
+    return submited.every((elem, i) => elem === correct[i]);
   }
 
   return false;

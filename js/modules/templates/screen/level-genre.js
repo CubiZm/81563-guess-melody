@@ -5,10 +5,12 @@ import resultFalse from '../screen/result-false';
 import initializePlayer from '../../../player';
 import data from '../../data/level-genre';
 import getTemplate from '../genre-template';
+import state from '../../data/state';
 
 export default ({genre}) => {
   const template = `
     <section class="main main--level main--level-genre">
+    <div class="lives">${state.lives}</div>
       <h2 class="title">Выберите хиты лета</h2>
       <form class="genre">
         ${genre.map(getTemplate).join(``)}
@@ -22,6 +24,10 @@ export default ({genre}) => {
   const formElement = renderTemplate.querySelector(`.genre`);
   const checkboxElements = [...renderTemplate.querySelectorAll(`[type="checkbox"]`)];
   const playerWrappers = [...renderTemplate.querySelectorAll(`.player-wrapper`)];
+  const lives = renderTemplate.querySelector(`.lives`);
+  lives.innerHTML = new Array(state.lives + 1).join(`
+      <span class="lives-heart">♥︎</span>
+    `);
 
   const setButtonDisabled = () => {
     let isFormCorrect = checkboxElements.some((checkbox) => checkbox.checked);

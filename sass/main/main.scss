@@ -46,6 +46,15 @@
   margin: 0 0 1em;
 }
 
+.lives {
+  display: flex;
+  justify-content: center;
+}
+
+.lives-heart {
+  color: red;
+}
+
 @import "--level/main--level";
 @import "--result/main--result";
 @import "--welcome/main--welcome";

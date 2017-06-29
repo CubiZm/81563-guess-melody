@@ -6,6 +6,8 @@ import track from '../../data/level-artist';
 import getTemplate from '../artist-template';
 import getTimer from '../timer-templates';
 import initializePlayer from '../../../player';
+// import submitAnswer from '../submit-answer';
+import state from '../../data/state';
 
 export default ({artists}) => {
 
@@ -23,7 +25,7 @@ export default ({artists}) => {
 
       <div class="main-wrap">
         <div class="main-timer"></div>
-
+        <div class="lives">${state.lives}</div>
         <h2 class="title main-title">Кто исполняет эту песню?</h2>
         <div class="player-wrapper"></div>
         <form class="main-list">
@@ -37,6 +39,10 @@ export default ({artists}) => {
   const renderTemplate = createTemplate(template);
   const playerWrapper = renderTemplate.querySelector(`.player-wrapper`);
   const buttonElement = renderTemplate.querySelector(`.main-list`);
+  const lives = renderTemplate.querySelector(`.lives`);
+  lives.innerHTML = new Array(state.lives + 1).join(`
+      <span class="lives-heart">♥︎</span>
+    `);
 
   const showScreenHandler = ({target}) => {
     if (target.classList.contains(`main-answer-r`)) {
